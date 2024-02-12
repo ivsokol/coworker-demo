@@ -1,0 +1,24 @@
+<configuration>
+  <property name="COLOR_CONSOLE_LOG_PATTERN"
+    value="%cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(${LOG_LEVEL_PATTERN:-%5p}) [%thread] %green(%X{call-id}) %red(%marker) %blue(%logger{128}@%M:%L): %m%n%ex{full}"/>
+
+  <variable scope="context" name="DEFAULT_APP_NAME" value="zeebe-playground"/>
+  <variable scope="context" name="DEFAULT_APP_VERSION" value="0.1.0"/>
+  <variable scope="context" name="SERVICE_ENVIRONMENT" value="local"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <withJansi>false</withJansi>
+    <encoder>
+      <pattern>${COLOR_CONSOLE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+  <logger name="org.example" level="DEBUG"/>
+  <logger name="org.camunda" level="TRACE"/>
+  <logger name="org.zeebe" level="TRACE"/>
+</configuration>
